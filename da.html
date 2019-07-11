@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Title</title>
+
+    <style>
+        .buttoncalc{
+            width: 50px;
+            height: 50px;
+            background: white;
+            border: solid black 1px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            font-size: 25px;
+            vertical-align: top;
+            margin: 5px;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        .roulcalk{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: row;
+        }
+        .otvetcalk{
+            width: 200px;
+            height: 50px;
+            background: white;
+            border: solid black 1px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            font-size: 25px;
+            vertical-align: top;
+            margin: 5px;
+            border-radius: 5px;
+        }
+    </style>
+
+</head>
+<body>
+<div class="roulcalk">
+    <div id="gg" class="otvetcalk"></div>
+</div>
+<div class="roulcalk">
+<div onclick="left('(')" id="o1" class="buttoncalc">
+(
+</div>
+<div onclick="right(')')" id="o2" class="buttoncalc">
+    )
+</div>
+<div onclick="proc('%')" id="o3" class="buttoncalc">
+%
+</div>
+<div onclick="nek(' ')" id="o4" class="buttoncalc">
+ AC
+</div>
+</div>
+<div class="roulcalk">
+
+<div onclick="kar('7')" id="7" class="buttoncalc">
+    7
+</div>
+<div onclick="kar('8')" id="8" class="buttoncalc">
+    8
+</div>
+<div onclick="kar('9')" id="9" class="buttoncalc">
+    9
+</div>
+<div onclick="del('/')" id="o5" class="buttoncalc">
+    /
+</div>
+</div>
+<div class="roulcalk">
+<div onclick="kar('4')" id="4" class="buttoncalc">
+    4
+</div>
+<div onclick="kar('5')" id="5" class="buttoncalc">
+5
+</div>
+<div onclick="kar('6')" id="6" class="buttoncalc">
+    6
+</div>
+<div onclick="umn('*')" id="summ" class="buttoncalc">
+    *
+</div>
+</div>
+<div class="roulcalk">
+  <div onclick="kar('1')" id="1" class="buttoncalc">
+    1
+    </div>
+<div onclick="kar('2')" id="2" class="buttoncalc">
+    2
+</div>
+<div onclick="kar('3')" id="3" class="buttoncalc">
+    3
+</div>
+<div onclick="minus('-')" id="min" class="buttoncalc">
+    -
+</div>
+</div>
+    <div class="roulcalk">
+
+<div onclick="kar('0')" id="0" class="buttoncalc">
+0
+</div>
+<div onclick="toc('.')" id="toch" class="buttoncalc">
+.
+</div>
+<div onclick="rav()" id="rov" class="buttoncalc">
+    =
+</div>
+<div onclick="plus('+')" id="plus" class="buttoncalc">
+    +
+</div>
+    </div>
+</body>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjs/6.0.3/math.min.js"></script>
+<script>
+function kar(text) {
+    document.getElementById('gg').innerHTML = document.getElementById('gg').innerHTML + text
+}
+function nek(text) {
+    document.getElementById('gg').innerHTML = text
+}
+function toc(text) {
+    if(!document.getElementById('gg').innerHTML.includes('.')&&document.getElementById('gg').innerHTML.length>0) {
+        document.getElementById('gg').innerHTML = document.getElementById('gg').innerHTML + text
+    } else if (document.getElementById('gg').innerHTML == ""){
+        document.getElementById('gg').innerHTML = "0" + text
+    }
+}
+function left(text){
+    document.getElementById('gg').innerHTML=document.getElementById('gg').innerHTML + text
+}
+function right(text) {
+    if(document.getElementById('gg').innerHTML.includes('(')){
+        document.getElementById('gg').innerHTML=document.getElementById('gg').innerHTML + text
+    }
+}
+function proc(text) {
+    if (!document.getElementById('gg').innerHTML.includes('%')&&document.getElementById('gg').innerHTML.length>0){
+        document.getElementById('gg').innerHTML=document.getElementById('gg').innerHTML+text
+    }
+}
+function rav(text) {
+        l = math.evaluate(document.getElementById('gg').innerHTML)
+        console.log(l)
+    document.getElementById('gg').innerHTML=l
+}
+function umn(text) {
+    if(!document.getElementById('gg').innerHTML.includes('*')&&document.getElementById('gg').innerHTML.length>0){
+        document.getElementById('gg').innerHTML= document.getElementById('gg').innerHTML+text
+    }
+}
+function del(text) {
+    if(!document.getElementById('gg').innerHTML.includes('/')&&document.getElementById('gg').innerHTML.length>0){
+        document.getElementById('gg').innerHTML= document.getElementById('gg').innerHTML+text
+    }
+}
+function plus(text) {
+    if(!document.getElementById('gg').innerHTML.includes('+')&&document.getElementById('gg').innerHTML.length>0){
+        document.getElementById('gg').innerHTML= document.getElementById('gg').innerHTML+text
+    }
+}
+function minus(text) {
+    if(!document.getElementById('gg').innerHTML.includes('-')&&document.getElementById('gg').innerHTML.length>0){
+        document.getElementById('gg').innerHTML= document.getElementById('gg').innerHTML+text
+    }
+}
+</script>
+
+</html>
